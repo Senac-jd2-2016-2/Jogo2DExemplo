@@ -38,6 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Contexto.cs" />
     <Compile Include="Fase1.cs" />
     <Compile Include="Personagem.cs" />
     <Compile Include="Program.cs" />
@@ -57,6 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\earth.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\shuttle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -13,6 +13,8 @@ namespace Jogo2DExemplo
 
         public int y;
 
+        public Texture2D texture;
+
         public Personagem(int x1, int y1)
         {
             x = x1;

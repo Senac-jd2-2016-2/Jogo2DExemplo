@@ -12,11 +12,7 @@ namespace Jogo2DExemplo
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        private Texture2D background;
-        private Texture2D shuttle;
 
-        private Personagem jogador = new Personagem(150, 240);
-        private Personagem inimigo = new Personagem(450, 240);
 
         public Fase1()
         {
@@ -46,8 +42,7 @@ namespace Jogo2DExemplo
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            background = Content.Load<Texture2D>("stars"); // change these names to the names of your images
-            shuttle = Content.Load<Texture2D>("shuttle");  // if you are using your own images.
+            Contexto.inicializar(Content);
             // TODO: use this.Content to load your game content here
         }
 
@@ -75,19 +70,19 @@ namespace Jogo2DExemplo
             {
                 if (k.Equals(Keys.Up))
                 {
-                    jogador.moverY(-2);
+                    Contexto.jogador.moverY(-2);
                 }
                 if (k.Equals(Keys.Down))
                 {
-                    jogador.moverY(2);
+                    Contexto.jogador.moverY(2);
                 }
                 if (k.Equals(Keys.Right))
                 {
-                    jogador.moverX(2);
+                    Contexto.jogador.moverX(2);
                 }
                 if (k.Equals(Keys.Left))
                 {
-                    jogador.moverX(-2);
+                    Contexto.jogador.moverX(-2);
                 }
             }
 
@@ -107,8 +102,14 @@ namespace Jogo2DExemplo
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
-            spriteBatch.Draw(shuttle, jogador.getVector(), Color.White);
+            spriteBatch.Draw(Contexto.background, new Rectangle(0, 0, 800, 480), Color.White);
+
+            spriteBatch.Draw(Contexto.jogador.texture, Contexto.jogador.getVector(), Color.White);
+            foreach(Personagem p in Contexto.inimigos)
+            {
+                spriteBatch.Draw(p.texture, p.getVector(), Color.White);
+            }
+
             spriteBatch.End();
 
 
